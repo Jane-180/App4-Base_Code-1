@@ -24,8 +24,181 @@ blah, blah, blah, blah
 -->
 
    <head> 
-      
-	PUT YOUR OLD CODE HERE!!! <!-- I'm going to try from sctrach one my own now -->
+    
+	  <title>Hello World</title>  
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="apple-mobile-web-app-capable" content="yes">
+      <link rel="stylesheet" href="w3.css">
+      <link rel="stylesheet" href="w3-colors-flat.css">
+   </head> 
+
+<!-- The new variables created in the script part will allow the results page to give the percentages for each cold and allergy-->
+<!-- I added parentheses to the denominators of my percent variables so that the math will work correctly-->
+<!-- The 100 at the end will be used to turn the decimal into percentages-->
+<!-- I'm getting rid of the 100's and seeing if it fixes the actual values-->
+<!-- I changed the denominator to say total_count-->
+<script>
+        var allergy_count = 0;
+        var cold_count = 0;
+//added the results text in the variables
+
+        function allergyAdd(){
+            allergy_count = allergy_count + 1;
+		//alert(allergy_count); 
+
+        }
+
+        function coldAdd(){
+            cold_count = cold_count + 1;
+        }
+	function display_results(){
+		var resultText = document.getElementById("result");
+		var coldPercent= (cold_count / (cold_count + allergy_count)) * 100; //I moved the the variables and function for results down to the bottom so that it will read later on when the counts add up
+		var allergyPercent= (allergy_count / (cold_count + allergy_count)) * 100; //proper math using variables
+		resultText.innerHTML = "Probability it is allergies =" + allergyPercent + "%<br> Probability it is a cold =" + coldPercent +"%"; //the % signs after the +value+ will print a percentage 
+		}
+	//formality to have script at the top
+	//I added the allergy percent function to do the math onclick for the results page
+  </script>
+
+
+
+<style>	
+.body {
+     margin: 0em;
+}
+
+.page {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: -100vw;
+    overflow-y: auto;
+    z-index: 0;
+    background-color: hsl(0,0%,100%);
+}
+
+  .page:target {
+    left: 0vw;
+    z-index: 1;
+}
+</style>
+
+<body>
+<div id="header" class="w3-container w3-flat-carrot">
+	<h1>Cold or Allergies?</h1>
+</div>
+	
+<div id="content" class="w3-container">
+	<p>Are you feeling like you might have a cold but wonder if it is allergies. Answer a few short questions to find out!</p>
+	
+	<a href="#one" class="w3-btn w3-grey w3-round"> Get Started </a>
+	
+	<p>The following code has been developed by students and/or researchers of the Freshman Research Initiative DIY Diagnostics Stream at The University of Texas at 		Austin.  This code is shared for demonstration purposes and should not be considered a product -- it is for entertainment purposes only. Any user of this code 			does so at their own risk. Members of the DIY Stream, FRI, and The University of Texas system are not liable for anything related to this code.</p>
+ 	
+	<p>THIS CODE SHOULD NOT BE USED TO DIAGNOSE ANY KIND OF MEDICAL CONDITION.</p>
+
+<!-- I typed question one in the part that said Content. I also added the button code and adjusted the yes no option for the correct response-->
+<div class="page" id="one">
+	<div id="header" class="w3-container w3-flat-carrot">
+		<h1>Question 1</h1>
+	</div>
+	
+    	<div id="content" class="w3-container">
+        <p>Are your eyes itchy or watery?</p>    
+    	</div>
+<!--I tried putting a one in all the parentheses to see if that will add a count on click-->
+	<a href="#two"  onclick="allergyAdd();" class="w3-btn w3-black"> Yes</a>
+        <a href="#two"  onclick="coldAdd();" class="w3-btn w3-black">No</a>
+</div>
+
+<div class="page" id="two">
+	<div class="w3-container w3-flat-carrot">
+		<h1>Question 2</h1>
+	</div>
+	
+	<div id="content" class="w3-container">
+		<p>Do you have a fever?</p>
+	</div>
+	<a href="#three"  onclick="allergyAdd();" class="w3-btn w3-black"> No</a>
+        <a href="#three"  onclick="coldAdd();" class="w3-btn w3-black">Yes</a>
+</div>	
+<!-- the multple divs are containters for the multiple questions-->
+<div class="page" id="three">
+	<div class="w3-container w3-flat-carrot">
+		<h1>Question 3</h1>
+	</div>
+	
+	<div id="content" class="w3-container">
+		<p>Do you have a sore throat?</p>
+	</div>
+	<a href="#four"  onclick="allergyAdd();" class="w3-btn w3-black"> No</a>
+        <a href="#four"  onclick="coldAdd();" class="w3-btn w3-black">Yes</a>
+</div>	
+
+<div class="page" id="four">
+	<div class="w3-container w3-flat-carrot">
+		<h1>Question 4</h1>
+	</div>
+	
+	<div id="content" class="w3-container">
+		<p>Are your symptoms seasonal or chronic?</p>
+	</div>
+	<a href="#five"  onclick="allergyAdd();" class="w3-btn w3-black"> Yes</a>
+        <a href="#five"  onclick="coldAdd();" class="w3-btn w3-black">No</a>
+</div>	
+
+
+<!--I added question five. this is for the additional allergy question-->
+<div class="page" id="five">
+	<div class="w3-container w3-flat-carrot">
+		<h1>Question 5</h1>
+	</div>
+	
+	<div id="content" class="w3-container">
+		<p>Is your mucus clear colored?</p>
+	</div>
+	<a href="#six"  onclick="allergyAdd();" class="w3-btn w3-black"> Yes</a>
+        <a href="#six"  onclick="coldAdd();" class="w3-btn w3-black">No</a>
+</div>	
+
+<!--I added question six this is for the additional cold question-->
+<div class="page" id="six">
+	<div class="w3-container w3-flat-carrot">
+		<h1>Question 6</h1>
+	</div>
+	
+	<div id="content" class="w3-container">
+		<p>Are you experiencing chills?</p>
+	</div>
+	<a href="#results"  onclick="allergyAdd();" class="w3-btn w3-black"> No</a>
+        <a href="#results"  onclick="coldAdd();" class="w3-btn w3-black">Yes</a>
+</div>	
+	
+<!--I added a results page and changed the id and header to match results-->
+<!--I added the var results text from the App 3 instructions-->
+<div class="page" id="results">	
+	<div class="w3-container w3-flat-carrot">
+		<h1>Results</h1>
+	</div>
+	<p id="result"> </p> <!-- This paragraph will make the results page display the results-->
+	<script>
+//The comments below came from my proccess of trial and error with script ultimately I moved all the script to the top
+//the percentages are displayed by adding a % after the value with +
+//I tried adding print (resultText) to see if it would print what was defined as resultText 
+//The print (resultText) WORKED YAY!! It made the words "probability it is allergies" and "probability it is cold" pop up on the results page now I just need to get the percentage values to just show up
+//I tried printing the print(allergy_count / total_count) and print(cold_count / total_count)
+//I'll try deleting the print parts
+</script>
+<!-- I added the div content container part so hopefully my results will now have a button; the button will say click for results-->
+	<a onclick= "display_results();"	class="w3-btn w3-black"> Click for Results</a>
+<!--the script part down here adds up the variables and I further indented the script-->
+	
+</div> <!--I forgot to add a div here-->
+<footer class="w3-bottom w3-container w3-flat-carrot">
+	<p>DIY!</p>
+</footer>
 	   
    </body>
 </html>
